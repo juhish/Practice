@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Freddie Mac</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="resources/normalize-3.0.2.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href="resources/compiledCSS.css"  rel='stylesheet' type='text/css'>
+    
+    <style>
+        .panel, .panel-group{
+            margin: 0;
+            padding: 0;
+        }
+        .panel-group .panel+.panel {
+    margin: 0;
+}
+        .searchOptionBlock{
+             
+    min-width: 35em;
+            background-color: #d7d7d7;
+            padding: 0;
+        }
+    .dropdown-accordion .panel-heading {
+  padding: 0;
+}
+.dropdown-accordion .panel-heading a {
+  display: block;
+  padding: 10px 15px;
+}
+    </style>
+    
+    <!-- Latest compiled and minified JavaScript -->
+
+</head>
+<body>
+    <div class="navbar navbar-static-top logo">
+        <div class="site-container">
+            <img id="u57_img" src="img/freddie-logo-new.png">
+        </div>
+    </div>
+    <div class="navbar navbar-site">
+        <div  class="site-container">
+            <div class="navbar-header">
+                
+             <a href="#"><i class="fa fa-2x fa-home navigation-item" style="margin-left: 1em;"></i></a>
+            </div>
+            <div id="navbar" class="collapse  navbar-collapse" >
+                <ul class="nav navbar-nav">                   
+                    <li class="dropdown ">
+                        <button id="main-menu" class="btn btn-menu-header dropdown-toggle hidden-xs" data-toggle="dropdown" href="#">MENU</button>  
+                        <ul class="dropdown-menu  main-menu-drodown">
+                            <li><a href="#">Portfolios</a></li>
+                            <li><a href="#">Data Files</a></li>
+                            <li><a href="#">Reports</a></li>
+                            <li><a href="#">Legal Documents</a></li>
+                            <li><a href="#">Tax Documents</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="dropdown dropdown-accordion" data-accordion="#accordion">
+  <a data-toggle="dropdown" href="#" ><i class="fa fa-2x fa-plus-circle navigation-item"></i></a>
+  <ul class="dropdown-menu searchOptionBlock" role="menu" aria-labelledby="dLabel">
+    <li>
+        <label style="width:100%; text-align:center;">Search Option</label>
+      <a id="optionExpandAll">Expand All</a>
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                Unit 1
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse accordion-body collapse">
+            <div class="panel-body">
+               <input type="number" name="quantity" min="1" max="5"> <br/>
+               <input type="range" name="points" min="0" max="10">
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                Unit 2
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse accordion-body collapse">
+            <div class="panel-body">
+               <input type="color" name="favcolor"> <br/>
+               <input type="range" name="points" min="0" max="10">
+            </div>
+          </div>
+        </div>
+           <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                Unit 1
+              </a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse accordion-body collapse">
+            <div class="panel-body">
+              <a href="#">Item a</a><br>
+             <input type="month" name="bdaymonth">
+            </div>
+          </div>
+        </div>
+       
+           <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                Unit 1
+              </a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse accordion-body collapse">
+            <div class="panel-body">
+              <a href="#">Item a</a><br>
+              <a href="#">Item b</a>
+            </div>
+          </div>
+        </div>
+       
+           <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                Unit 1
+              </a>
+            </h4>
+          </div>
+          <div id="collapse4" class="panel-collapse accordion-body collapse">
+            <div class="panel-body">
+              <a href="#">Item a</a><br>
+              <a href="#">Item b</a>
+            </div>
+          </div>
+        </div>
+       
+           <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+                Unit 1
+              </a>
+            </h4>
+          </div>
+          <div id="collapse5" class="panel-collapse accordion-body collapse">
+            <div class="panel-body">
+              <a href="#">Item a</a><br>
+              <a href="#">Item b</a>
+            </div>
+          </div>
+        </div>
+       
+           <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
+                Unit 1
+              </a>
+            </h4>
+          </div>
+          <div id="collapse6" class="panel-collapse accordion-body collapse">
+            <div class="panel-body">
+              <a href="#">Item a</a><br>
+              <a href="#">Item b</a>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </li>
+  </ul>
+</div>
+                      
+                    </li>
+                    <li><a href="#"><i class="fa fa-question-circle fa-2x navigation-item "></i></a></li>
+                    <li><a href="#"><i class="fa fa-bell-o fa-2x navigation-item "></i></a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user fa-2x navigation-item "></i></a>
+                        <ul class="dropdown-menu navbar-right-dropdown">
+                            <li><a href="#">Manage Users</a></li>
+                            <li><a href="#">View Users</a></li>
+                            <li><a href="#">Set Permission</a></li>
+                            <li><a href="#">Manage Access</a></li>
+                            <li><a href="#">Usage Details</a></li>
+                            <li><a href="#">General Usage</a></li>
+                            <li><a href="#">Publish Files</a></li>
+                            <li><a href="#">Publish</a></li>
+                            <li><a href="#">Audit Logs</a></li>
+                            <li><a href="#">Delete Pools</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+</div>
+                <!-- <button type="submit" class="btn btn-xs btn-success">Sign in</button> -->
+            </div>
+    </div>
+    
+    <div id="search-option-block" class="">
+      
+</div>
+
+<!-- Modal -->
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+       Text to Be placed here...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+            
+    //Dropdown behavior
+        $(".panel-body").click(function(event){
+             event.preventDefault();
+            event.stopPropagation();
+        })    
+            $("#optionExpandAll").click(function(event){
+                event.preventDefault();
+                event.stopPropagation();
+                 $(this).siblings('div').find('div.accordion-body:not(.in)').collapse('show');
+ 
+            });
+            // Collapse accordion every time dropdown is shown
+$('.dropdown-accordion').on('show.bs.dropdown', function (event) {
+  $($(this).data('parent')).find('.panel-collapse.in').collapse('show');
+});
+
+// Prevent dropdown to be closed when we click on an accordion link
+$('.dropdown-accordion').on('click', 'a[data-toggle="collapse"]', function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+ // $($(this).data('parent')).find('.panel-collapse.in').collapse('hide');
+  $($(this).attr('href')).collapse('toggle');
+    console.log("collapse");
+})
+            
+            
+});
+
+    </script>
+</body>
+</html>
