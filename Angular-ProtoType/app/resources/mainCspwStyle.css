@@ -1,0 +1,336 @@
+/*
+    $font-family-stack : 'Open Sans', sans-serif; 
+    $default-font-weight : lighter;
+    $primary-freddie-color:  #87BE44;
+    $secondary-freddie-color: #4C8805;
+    $jumbotron-footer-color : #F2F2F2;
+    $jumbotron-button-color : #0099ff;
+    $main-menu-button-color : #17A5DE;
+*/
+
+
+/*Header - Logo*/
+/*Navigation Bar*/
+/*Menu Items and DropDowns*/
+
+/*Jumbotron - Jumbotron Elements*/
+
+/*body Element*/
+/*Footer Element*/
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: lighter;
+        }
+        .logo {           
+            margin-left: 2.5em;
+            padding: 1em 0 0 0;
+            background-color: white;
+        }
+
+          .nav > li > a:hover {
+            text-decoration: none;
+            background-color: rgb(102, 102, 102);
+        }
+
+        .nav > li > a:active {
+            text-decoration: none;
+            background-color: rgb(102, 102, 102) ;
+        }
+
+        .nav > li > a:focus {
+            text-decoration: none;
+            background-color: rgb(102, 102, 102) ;
+        }
+
+        .nav > li > a {
+            padding: 0 !important;
+        }
+
+        .navbar-nav > li > a {
+            padding: 0;
+        }
+
+        .nav .open > a {
+            background-color: rgb(102, 102, 102) !important;
+        }
+
+        .nav .open > button  {
+            background-color: #87BE44 !important;
+        }
+
+
+        .navbar-freddie {
+            background-color: #666666;
+            border-color: #666666;
+            border-radius: 0;
+            min-height: 50px;
+            margin-top: -1em;
+        }
+
+        .jumbotron-freddie {
+            background-color: #87BE44;
+            border-color: #4C8805;
+            border-radius: 0;
+            margin-top: -1.5em;
+            min-height: 250px;
+            box-shadow: 0 15px 10px #4c8805;
+        }
+
+            .jumbotron-freddie:after {
+                box-shadow: 0 10px 10px Grey;
+            }
+
+        .jumbotron > hr {
+            border-top-color: #666;
+            margin-top: -3.2em;
+        }
+
+        .jumbotron-freddie-hr {
+        }
+
+        .jumbotron h1 {
+            font-family: "Open Sans";
+            font-size: 48px;
+            color: white;
+            font-weight: lighter;
+            margin-top: .1em;
+        }
+
+        .jumbotron h2 {
+            font-family: "Open Sans";
+            font-size: 32px;
+            color: white;
+            margin-top: 1em;
+            font-weight: lighter;
+        }
+
+        .jumbotron h3 {
+            font-family: "Open Sans";
+            font-size: 28px;
+            font-weight: lighter;
+            color: white;
+        }
+
+        .jumbotron input {
+            min-height: 64px;
+            border-radius: 6px 0 0 6px;
+            width:77%;
+            border-style: none;
+            margin-top: 2.7em;
+            font-size: larger;
+            font-weight :bolder;
+            color : #0099ff;
+            padding-left: 2em;
+        }
+
+        .jumbotron [type="submit"] {
+            font-family: "Open Sans";
+            font-size: 32px;
+            color: white;
+            width : 22%;
+            min-height: 64px;
+            font-weight: lighter;
+        }
+
+
+        .btn-Search-jumbotron {
+            background-color: #0099ff;
+            border-radius: 0 5px 5px 0;
+        }
+
+            .btn-Search-jumbotron:hover {
+                background-color: #4c8805;
+            }
+
+            .btn-Search-jumbotron:active {
+                background-color: #4c8805;
+            }
+
+
+        .navigation-item {
+            color: white;
+            margin-top: .2em;
+            padding: .1em;
+            margin-left: .5em;
+            text-align: center;
+        }
+
+            .navigation-item:hover {
+                background-color: #87BE44;
+                border: 2px #87BE44;
+                border-radius: 5px;
+            }
+             .navigation-item:active {
+                background-color: #87BE44 !important;
+                border: 2px #87BE44;
+                border-radius: 5px;
+            }
+
+        .jumbotron-img {
+            margin-top: 2.5em;
+            margin-bottom: -3.5em;
+            margin-left: -2em;
+        }
+
+        .jumbotron-footer {
+            min-height: 2.5em;
+            background-color: #F2F2F2;
+            margin-top: -1.3em;
+        }
+
+        ::-webkit-input-placeholder {
+            font-family: "Open Sans";
+            font-weight: lighter;
+            font-size: 20px;
+            color: #CCCCCC;
+            font-style: italic;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+            font-family: "Open Sans";
+            font-weight: lighter;
+            font-size: 20px;
+            color: #CCCCCC;
+            font-style: italic;
+        }
+
+        ::-moz-placeholder { /* Firefox 19+ */
+            font-family: "Open Sans";
+            font-weight: lighter;
+            font-size: 20px;
+            color: #CCCCCC;
+            font-style: italic;
+        }
+
+        :-ms-input-placeholder {
+            font-family: "Open Sans";
+            font-weight: lighter;
+            font-size: 20px;
+            color: #CCCCCC;
+            font-style: italic;
+        }
+
+        .freddie-container {
+            width: 98%;
+        }
+
+         
+        #main-menu {
+              color: white;
+    background-color: #17A5DE;
+    border-radius: 0;
+    height: 2.5em;
+    width: 7em;
+    font-weight: bolder;
+    margin-top: .4em;
+    margin-left: 2.5em;
+            
+        }
+
+            #main-menu:hover {
+                
+                background-color: #87BE44 ;
+            }
+            #main-menu:active {
+                
+                background-color: #87BE44;
+            }
+            
+              .main-menu-drodown {
+            border-top: 5px solid #87BE44;
+            border-radius: 0;
+          
+            font-family: Open Sans;
+                margin-top: .8em!important;
+        }
+
+            .main-menu-drodown > li > a {
+                padding: 1em .5em 0 2em;
+            }
+
+        .title-area {
+            margin-top: 5em;
+        }
+
+        .title-header {
+            font-family: "Open Sans";
+            font-size: 18px;
+            font-weight: lighter;
+            color: #4c8805;
+            margin-left: 30%;
+            padding-left: 1em;
+            padding-right: 1em;
+            background-color: white;
+        }
+
+        .title-content {
+            padding: 2em;
+        }
+
+            .title-content a {
+                font-family: "Open Sans";
+                font-size: 14px;
+                font-weight: lighter;
+                color: #0099ff;
+                text-decoration: underline;
+                line-height: 3;
+            }
+
+        .title-box {
+            border: 1px solid #D7D7D7;
+            border-radius: 6px;
+            z-index: -1;
+            margin-top: -1.3em;
+            font-family: "Open Sans";
+            font-weight: lighter;
+            color: #666;
+            height: 18em;
+            overflow: auto;
+        }
+
+        .search-option-text {
+               font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: lighter;
+    color: #4c8805;
+    margin-left: 78%;
+    width: 23%;
+    text-decoration: none !important;
+        }       
+
+      
+      
+
+    
+         .navbar-right-dropdown {
+             border-top: 5px solid #87BE44;
+              border-right: 5px solid #87BE44;
+            border-radius: 0;
+            margin-top: .8em !important;
+            margin-right: -1.5em !important;
+        }
+        .navbar-right-dropdown > li:last-child  {
+                 margin-top: -1em;
+    font-size: 18px;
+        }
+
+.navbar-right-dropdown > li > a {
+    padding: 1em .5em .5em 2em;
+}
+
+
+
+@media (max-width: 767px) {
+    .jumbotron [type="submit"] {
+        font-size: 14px;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 991px) {
+    .search-option-text {
+        font-family: "Open Sans";
+        font-size: .9em;
+    }
+}

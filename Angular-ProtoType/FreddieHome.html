@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="freddieApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Freddie Mac</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="app/resources/normalize-3.0.2.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href="app/resources/compiledCSS.css"  rel='stylesheet' type='text/css'>
+    
+    <!-- Latest compiled and minified JavaScript -->
+
+</head>
+<body>
+    <div class="navbar navbar-static-top logo">
+        <div class="site-container">
+            <img id="u57_img" src="app/resources/img/freddie-logo-new.png">
+        </div>
+    </div>
+    <div class="navbar navbar-site">
+        <div  class="site-container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span style="color:whitesmoke;"><i class="fa fa-2x fa-bars"></i></span>
+                </button>
+             <a href="#"><i class="fa fa-2x fa-home navigation-item" style="margin-left: 1em;"></i></a>
+            </div>
+            <div id="navbar" class="collapse  navbar-collapse" >
+                <ul class="nav navbar-nav">                   
+                    <li class="dropdown ">
+                        <button id="main-menu" class="btn btn-menu-header dropdown-toggle hidden-xs" data-toggle="dropdown" href="#">MENU</button>  
+                        <ul class="dropdown-menu  main-menu-drodown">
+                            <li><a href="#">Portfolios</a></li>
+                            <li><a href="#">Data Files</a></li>
+                            <li><a href="#">Reports</a></li>
+                            <li><a href="#">Legal Documents</a></li>
+                            <li><a href="#">Tax Documents</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-question-circle fa-2x navigation-item "></i></a></li>
+                    <li><a href="#"><i class="fa fa-bell-o fa-2x navigation-item "></i></a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user fa-2x navigation-item "></i></a>
+                        <ul class="dropdown-menu navbar-right-dropdown">
+                            <li><a href="#">Manage Users</a></li>
+                            <li><a href="#">View Users</a></li>
+                            <li><a href="#">Set Permission</a></li>
+                            <li><a href="#">Manage Access</a></li>
+                            <li><a href="#">Usage Details</a></li>
+                            <li><a href="#">General Usage</a></li>
+                            <li><a href="#">Publish Files</a></li>
+                            <li><a href="#">Publish</a></li>
+                            <li><a href="#">Audit Logs</a></li>
+                            <li><a href="#">Delete Pools</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+</div>
+                
+            </div>
+    </div>
+    <div id="main">
+       <div ui-view class="view-animate"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>   
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    
+     <script src="freddieApp.js"></script>
+
+    <script>
+        $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+
+    </script>
+</body>
+</html>
