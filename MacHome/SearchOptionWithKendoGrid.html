@@ -28,10 +28,12 @@
 
     <style>
         * {
-            font-style: Lighter;
+             font-weight: lighter;
             font-family: "Open Sans";
             font-size: 13px;
         }
+
+ 
         
         .panel,
         .panel-group {
@@ -44,7 +46,7 @@
         }
         
         .searchOptionBlock {
-            min-width: 35em;
+            min-width: 45em;
             background-color: #f2f2f2;
             padding: 0;
         }
@@ -63,6 +65,9 @@
             border: 0;
             background-color: #F2f2f2;
         }
+            .panel-title{
+                margin-top: 1em;
+            }
         
         .panel-border {
             border-bottom: 1px solid #e6e6e6;
@@ -88,13 +93,17 @@
         }
         
         a[data-toggle="collapse"]:before {
-            content: "\f054";
+            content: "\f0da";
             font-family: FontAwesome;
+                font-size: 15px;
+    color: #1E9ED7;
         }
         
         [data-parent="#accordion"][aria-expanded="true"]:before {
-            content: "\f078";
+            content: "\f0d7";
             font-family: FontAwesome;
+                font-size: 15px;
+    color: #1E9ED7;
         }
         
         a:hover {
@@ -102,16 +111,24 @@
         }
         
         a:visited {
-            text-decoration: none;
+            text-decoration: none !important;
         }
+         a:focus {
+            text-decoration: none !important;
+            outline: none;
+        }
+
         
         .panel-default>.panel-heading {
             background-image: none;
             background-color: #f2f2f2;
         }
         .search-option-tools-body{
-
             height: : 12em;
+            font-weight: lighter;
+        }
+         .search-option-tools-body >label{
+            font-weight: lighter;
         }
         .panel-body.search-option-tools-body > input {
             width: 70px;
@@ -150,8 +167,14 @@
                                margin-left:5px;
                                margin-top: 8px;
                                margin-bottom: -3px;
+                               float: left;
                               }
-
+input#minIssuedate, input#maxIssuedate, input#minMaturitydate, input#maxMaturitydate {
+    border: 0;
+    padding-top: 1.5em;
+    padding-right: 2px;
+    color: #B1B1B1;
+}
 
     /*Kendo Slider Modifications*/
     .k-slider-horizontal .k-draghandle{
@@ -239,13 +262,19 @@
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><button id="searchOption" class="btn btn-sm btn-primary navigation-item ">Search</li>
                     <li>
                         <div class="dropdown dropdown-search-option" data-accordion="#accordion">
                             <a data-toggle="dropdown" href="#"><i class="fa fa-2x fa-plus-circle navigation-item"></i></a>
                             <ul class="dropdown-menu searchOptionBlock" role="menu" aria-labelledby="dLabel">
                                 <li>
-                                    <label style="width:100%; text-align:center;">Search Option</label>
-                                    <a id="optionExpandAll" class="pull-right label">Expand All</a>
+                                    <label style="width:100%;text-align:center;background-color:#1E9ED7;height: 3em;/* vertical-align: middle; *//* text-align: center; */padding-top: 1em;color: white;">Search Option</label>
+                                    <a id="optionExpandAll" class="pull-right" style="
+    color: blue;
+    background-image: none;
+    background-color: #f2f2f2;
+    cursor: pointer;
+">Expand All</a>
                                     <div class="panel-group" id="accordion">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
@@ -304,7 +333,7 @@
                                             <div id="securityFactor" class="panel-collapse  collapse search-option-tools">
                                                 <div class="panel-body search-option-tools-body">
 
-<div id="SecurityFactorRangeSlider" style="width:30em; margin-left:2em"  >
+<div id="SecurityFactorRangeSlider" style="width:40em; margin-left:2em"  >
                             <input />
                             <input />
   </div>
@@ -326,16 +355,9 @@
                                             </div>
                                             <div id="maturityDate" class="panel-collapse  collapse search-option-tools">
                                                 <div class="panel-body search-option-tools-body">
-
-  <div id="MaturityDateRangeSlider" style="width:30em; margin-left:2em"  >
-                            <input />
-                            <input />
-  </div>
-                                                    <input type="text" id="lowestmaturityDateSliderValue" readonly>
-                                                    <input type="text" id="highestmaturityDateSliderValue" readonly class="pull-right">
-
-
-
+                                                 <div class="col-md-offset-2 col-md-5">  Start Date: <br/>  <input type="text" id="minMaturitydate" readonly /></div>                                  
+             
+                <div class="col-md-5"> End Date : <br/><input type="text" id="maxMaturitydate" readonly /></div> 
 
                                                 </div>
                                             </div>
@@ -352,12 +374,10 @@
                                             </div>
                                             <div id="issueDate" class="panel-collapse  collapse search-option-tools">
                                                 <div class="panel-body search-option-tools-body">
-                                                    <div id="issueDateSlider"></div>
-                                                    <label  for="datepicker"><input type="text" id="datepicker" /></label>
-
-                                                    <input type="text" id="lowestissueDateSliderValue" readonly>
-                                                    <input type="text" id="highestissueDateSliderValue" readonly class="pull-right">
-
+                <div class="col-md-offset-2 col-md-5">  Start Date: <br/>  <input type="text" id="minIssuedate"  readonly /></div>                                  
+             
+                <div class="col-md-5"> End Date : <br/><input type="text" id="maxIssuedate" readonly /></div> 
+                
 
 
                                                 </div>
@@ -377,7 +397,7 @@
                                             </div>
                                             <div id="weightedAvgIntRate" class="panel-collapse  collapse search-option-tools">
                                                 <div class="panel-body search-option-tools-body">
-                                                     <div id="WeightedAvgIntRaterangeslider" style="width:30em; margin-left:2em"  >
+                                                     <div id="WeightedAvgIntRaterangeslider" style="width:40em; margin-left:2em"  >
                             <input />
                             <input />
   </div>
@@ -403,7 +423,7 @@
                                             <div id="investorUPB" class="panel-collapse  collapse search-option-tools">
                                                 <div class="panel-body search-option-tools-body">
                                                   
-   <div id="InvestorUPBrangeslider" style="width:30em;margin-left:2em" >
+   <div id="InvestorUPBrangeslider" style="width:40em;margin-left:2em" >
                             <input />
                             <input />
   </div>
@@ -465,6 +485,51 @@
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
 
+            //On Page Load Initialize default value for Search Options
+            var objSearchOption ={};
+
+            var getSearchOptionsDefaultValueOnPageLoad=function(){
+    //ajax call to get the default search option object for top navigation and left navigation
+    //...
+    objSearchOption.lowestsecurityFactorValue =0;
+    objSearchOption.highestsecurityFactorValue =5000;               
+    objSearchOption.lowestweightedAvgIntRateValue = 0;
+                objSearchOption.highestweightedAvgIntRateValue =5000;
+                objSearchOption.lowestinvestorUPBValue = 0;
+                objSearchOption.highestinvestorUPBValue =5000;
+
+    //Dates
+    objSearchOption.minMaturitydate = new Date().toLocaleDateString();
+    objSearchOption.maxMaturitydate = new Date().toLocaleDateString();
+
+    objSearchOption.minIssuedate = new Date().toLocaleDateString();
+    objSearchOption.maxIssuedate = new Date().toLocaleDateString();   
+
+
+            $('#minIssuedate').datepicker({ /* optional option parameters... */ })
+               .datepicker("setDate", objSearchOption.minIssuedate);
+                $('#maxIssuedate').datepicker({ /* optional option parameters... */ })
+               .datepicker("setDate", objSearchOption.maxIssuedate);
+                $('#minMaturitydate').datepicker({ /* optional option parameters... */ })
+               .datepicker("setDate", objSearchOption.minMaturitydate);
+                $('#maxMaturitydate').datepicker({ /* optional option parameters... */ })
+               .datepicker("setDate", objSearchOption.maxMaturitydate);
+ 
+
+};
+
+
+
+ $( "#minIssuedate, #maxIssuedate,#minMaturitydate,#maxMaturitydate" ).datepicker({
+      showOn: "button",        
+      buttonImage: 'img/datepicker.png',
+      buttonImageOnly: true,
+      buttonText: "Select date"
+    });
+
+
+getSearchOptionsDefaultValueOnPageLoad();
+
             //Dropdown behavior
             //Do not close dropdown if user clickes anywhere else other than outside dropdown body
             $(".searchOptionBlock").click(function(event) {
@@ -508,29 +573,22 @@
 
             });
             //#endregion
+//#region Date Input in Search Options
 
+//#endregion
             //#region Sliders
             // Initialize high a low value for readonly textbox
 
 //#region Kendo SLiders
 
 
- var lowestsecurityFactorValue = 0,
-                highestsecurityFactorValue =5000,
-                lowestmaturityDateValue = 0,
-                highestmaturityDateValue =5000,
-                lowestissueDateValue = 0,
-                highestissueDateValue =5000,                
-                lowestweightedAvgIntRateValue = 0,
-                highestweightedAvgIntRateValue =5000,
-                lowestinvestorUPBValue = 0,
-                highestinvestorUPBValue =5000;
+ 
 
 //#region Security Factor
  //Initialize Text Box
-   $("#lowestsecurityFactorSliderValue").val(lowestsecurityFactorValue);
+   $("#lowestsecurityFactorSliderValue").val(objSearchOption.lowestsecurityFactorValue);
 
-   $("#highestsecurityFactorSliderValue").val(highestsecurityFactorValue);
+   $("#highestsecurityFactorSliderValue").val(objSearchOption.highestsecurityFactorValue);
 
 //Event
 function SecurityFactorRangeSliderOnChange(e) {
@@ -550,68 +608,28 @@ function SecurityFactorRangeSliderOnChange(e) {
 //Initialize Slider
  $("#SecurityFactorRangeSlider").kendoRangeSlider({
                         change: SecurityFactorRangeSliderOnChange,                       
-                        min: lowestsecurityFactorValue,
-                        max: highestsecurityFactorValue,
-                        smallStep: highestsecurityFactorValue / 20,
-                        largeStep: highestsecurityFactorValue /2
+                        min: objSearchOption.lowestsecurityFactorValue,
+                        max: objSearchOption.highestsecurityFactorValue,
+                        smallStep: objSearchOption.highestsecurityFactorValue / 20,
+                        largeStep: objSearchOption.highestsecurityFactorValue /2
                     });
 
 
 //#endregion   
-//#region Maturity Date Range Slider
- //Initialize Text Box
-   $("#lowestmaturityDateSliderValue").val(new Date("2013-06-13").toLocaleDateString());
-
-   $("#highestmaturityDateSliderValue").val(new Date("2013-06-20").toLocaleDateString());
-
-//Event
-function MaturityDateRangeSliderOnChange(e) {
-    console.log(new Date(e.value[0] * 1000).toLocaleDateString())
-
-            $("#lowestmaturityDateSliderValue").val(new Date(e.value[0]).toLocaleDateString());
-            $("#highestmaturityDateSliderValue").val(new Date(e.value[1]).toLocaleDateString());
-                   
-             }
-             //new Date(time_posted * 1000).toLocaleDateString();
-
-                function MaturityDateRangeSliderOnSlide(e) {
-                    //Not Used
-                    console.log("Slide :: new max slide value is: " + e.value[1]);
-                     console.log("Slide :: new min slide value is: " + e.value[0]);
-                  
-                 
-                }
-               
-//Initialize Slider
-$("#MaturityDateRangeSlider").kendoRangeSlider({
-    change: MaturityDateRangeSliderOnChange,
-  min: new Date("2013-06-13").getTime(),
-  max: new Date("2019-06-20").getTime(),
-  smallStep: 86400000,
-  largeStep: 86400000
-});
- // $("#MaturityDateRangeSlider").kendoRangeSlider({
- //                        change: MaturityDateRangeSliderOnChange,                       
- //                        min: new Date("2013-06-13").getTime(),
- //                        max: new Date("2013-06-20").getTime(),
- //                        smallStep: 86400000,
- //                        largeStep: 86400000
- //                    });
 
 
-//#endregion   
 
 //#region WeightedAvgIntRate
 
   //Initialize Text Box
-   $("#lowestweightedAvgIntRateSliderValue").val(lowestweightedAvgIntRateValue);
+   $("#lowestweightedAvgIntRateSliderValue").val(objSearchOption.lowestweightedAvgIntRateValue);
 
-   $("#highestweightedAvgIntRateSliderValue").val(highestweightedAvgIntRateValue);
+   $("#highestweightedAvgIntRateSliderValue").val(objSearchOption.highestweightedAvgIntRateValue);
 
 //Event
  function WeightedAvgIntRaterangesliderOnChange(e) {
-            $("#lowestweightedAvgIntRateSliderValue").val("$" + e.value[0]);
-            $("#highestweightedAvgIntRateSliderValue").val("$" + e.value[1]);
+            $("#lowestweightedAvgIntRateSliderValue").val(e.value[0] + "%");
+            $("#highestweightedAvgIntRateSliderValue").val( e.value[1]+ "%");
                    
              }
 
@@ -626,10 +644,10 @@ $("#MaturityDateRangeSlider").kendoRangeSlider({
 //Initialize Slider
  $("#WeightedAvgIntRaterangeslider").kendoRangeSlider({
                         change: WeightedAvgIntRaterangesliderOnChange,                       
-                        min: lowestweightedAvgIntRateValue,
-                        max: highestweightedAvgIntRateValue,
-                        smallStep: highestweightedAvgIntRateValue / 20,
-                        largeStep: highestweightedAvgIntRateValue /2
+                        min: objSearchOption.lowestweightedAvgIntRateValue,
+                        max: objSearchOption.highestweightedAvgIntRateValue,
+                        smallStep: objSearchOption.highestweightedAvgIntRateValue / 20,
+                        largeStep: objSearchOption.highestweightedAvgIntRateValue /2
                     });
 
 
@@ -637,9 +655,9 @@ $("#MaturityDateRangeSlider").kendoRangeSlider({
 
 //#region lowestinvestorUPBSliderValue
 
-     $("#lowestinvestorUPBSliderValue").val(lowestinvestorUPBValue);
+     $("#lowestinvestorUPBSliderValue").val(objSearchOption.lowestinvestorUPBValue);
 
-   $("#highestinvestorUPBSliderValue").val(highestinvestorUPBValue);
+   $("#highestinvestorUPBSliderValue").val(objSearchOption.highestinvestorUPBValue);
 function InvestorUPBrangesliderOnChange(e) {
   
               
@@ -660,45 +678,27 @@ function InvestorUPBrangesliderOnChange(e) {
 
  $("#InvestorUPBrangeslider").kendoRangeSlider({
                         change: InvestorUPBrangesliderOnChange,                       
-                        min: lowestinvestorUPBValue,
-                        max: highestinvestorUPBValue,
-                        smallStep: highestinvestorUPBValue / 20,
-                        largeStep: highestinvestorUPBValue /2
+                        min: objSearchOption.lowestinvestorUPBValue,
+                        max: objSearchOption.highestinvestorUPBValue,
+                        smallStep: objSearchOption.highestinvestorUPBValue / 20,
+                        largeStep: objSearchOption.highestinvestorUPBValue /2
                     });
 
 
 //#endregion
+$("#searchOption").click(function(){
+    objSearchOption.SearchString = "JO Bhi Hain";
+    console.log(objSearchOption);
 
+    //Reset Top Search Criteria
 
-       
+    getSearchOptionsDefaultValueOnPageLoad();
+});
+               
 
-            $("#issueDateSlider").slider({
-                range: true,
-                min: lowestissueDateValue,
-                max: highestissueDateValue,
-                values: [lowestissueDateValue, highestissueDateValue],
-                slide: function(event, ui) {
-                    $("#lowestissueDateSliderValue").val("$" + ui.values[0]);
-                    $("#highestissueDateSliderValue").val("$" + ui.values[1]);
-                }
-            });
-
- 
-
-
-         
-
-            
-            //Date Picker for Slider
-                $( "#datepicker" ).datepicker({
-      showOn: "button",
-                     isRTL: true,
-      buttonImage: 'http://jqueryui.com/resources/demos/datepicker/images/calendar.gif',
-      buttonImageOnly: true,
-      buttonText: "Select date"
-    });
 
         });
+
     </script>
 </body>
 
