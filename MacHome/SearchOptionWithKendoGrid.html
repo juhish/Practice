@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/jquery-ui-git.css">
 
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.material.min.css" />
+
+   
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
     <link href="resources/compiledCSS.css" rel='stylesheet' type='text/css'>
 
@@ -105,11 +109,16 @@
             background-image: none;
             background-color: #f2f2f2;
         }
-        
+        .search-option-tools-body{
+
+            height: : 12em;
+        }
         .panel-body.search-option-tools-body > input {
             width: 70px;
             height: 50px;
-            margin-top: 1em;
+            margin-top: 1.5em;
+                padding: 2px;
+                border: 1px solid #f2f2f2;
         }
         
         //UI slider
@@ -141,8 +150,46 @@
                                margin-left:5px;
                                margin-top: 8px;
                                margin-bottom: -3px;
-            float:left;
                               }
+
+
+    /*Kendo Slider Modifications*/
+    .k-slider-horizontal .k-draghandle{
+        width: 10px;
+        height: 10px;
+        top: -7px;
+            box-shadow: 2.5px 2px #cdcdcd;
+    }
+    .k-draghandle{
+        border-radius :0;
+        border-color: #1E9ED7;
+        background-color:  #1E9ED7;
+    }
+    .k-draghandle:hover {
+         border-color: green;
+        background-color:  green;
+        box-shadow: none;
+
+    }
+    .k-draghandle.k-state-focused, .k-draghandle.k-state-focused:link{
+         border-color: #1E9ED7;
+        background-color:  #1E9ED7;
+
+    }
+    .k-slider-selection {
+      border-color: green;
+        background-color:  green;
+}
+    .k-state-disabled, .k-state-disabled .k-link, .k-state-disabled{
+        border-color: #1E9ED7;
+        background-color:  #1E9ED7;
+
+    }
+    .k-slider-horizontal .k-label {
+    bottom: -1.2em;
+    display: none;
+}
+                              
     </style>
 
     <!-- Latest compiled and minified JavaScript -->
@@ -256,12 +303,13 @@
                                             </div>
                                             <div id="securityFactor" class="panel-collapse  collapse search-option-tools">
                                                 <div class="panel-body search-option-tools-body">
-                                                    <div id="securityFactorSlider"></div>
 
+<div id="SecurityFactorRangeSlider" style="width:30em; margin-left:2em"  >
+                            <input />
+                            <input />
+  </div>
                                                     <input type="text" id="lowestsecurityFactorSliderValue" readonly>
                                                     <input type="text" id="highestsecurityFactorSliderValue" readonly class="pull-right">
-
-
 
                                                 </div>
                                             </div>
@@ -278,10 +326,14 @@
                                             </div>
                                             <div id="maturityDate" class="panel-collapse  collapse search-option-tools">
                                                 <div class="panel-body search-option-tools-body">
-                                                    <div id="maturityDateSlider"></div>
 
+  <div id="MaturityDateRangeSlider" style="width:30em; margin-left:2em"  >
+                            <input />
+                            <input />
+  </div>
                                                     <input type="text" id="lowestmaturityDateSliderValue" readonly>
                                                     <input type="text" id="highestmaturityDateSliderValue" readonly class="pull-right">
+
 
 
 
@@ -325,8 +377,10 @@
                                             </div>
                                             <div id="weightedAvgIntRate" class="panel-collapse  collapse search-option-tools">
                                                 <div class="panel-body search-option-tools-body">
-                                                    <div id="weightedAvgIntRateSlider"></div>
-
+                                                     <div id="WeightedAvgIntRaterangeslider" style="width:30em; margin-left:2em"  >
+                            <input />
+                            <input />
+  </div>
                                                     <input type="text" id="lowestweightedAvgIntRateSliderValue" readonly>
                                                     <input type="text" id="highestweightedAvgIntRateSliderValue" readonly class="pull-right">
 
@@ -348,12 +402,13 @@
                                             </div>
                                             <div id="investorUPB" class="panel-collapse  collapse search-option-tools">
                                                 <div class="panel-body search-option-tools-body">
-                                                    <div id="investorUPBSlider">
-                                                    <hr/></div>
-
-                                                    <input type="text" id="lowestinvestorUPBSliderValue" readonly>
+                                                  
+   <div id="InvestorUPBrangeslider" style="width:30em;margin-left:2em" >
+                            <input />
+                            <input />
+  </div>
+    <input type="text" id="lowestinvestorUPBSliderValue" readonly>
                                                     <input type="text" id="highestinvestorUPBSliderValue" readonly class="pull-right">
-
 
                                                 </div>
                                             </div>
@@ -402,6 +457,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+     
+    <script src="https://kendo.cdn.telerik.com/2015.3.1111/js/kendo.all.min.js"></script>
+
 
     <script>
         $(document).ready(function() {
@@ -454,40 +512,165 @@
             //#region Sliders
             // Initialize high a low value for readonly textbox
 
-  var lowestsecurityFactorValue = 0,
-                highestsecurityFactorValue =500000,
+//#region Kendo SLiders
+
+
+ var lowestsecurityFactorValue = 0,
+                highestsecurityFactorValue =5000,
                 lowestmaturityDateValue = 0,
-                highestmaturityDateValue =500000,
+                highestmaturityDateValue =5000,
                 lowestissueDateValue = 0,
-                highestissueDateValue =500000,                
+                highestissueDateValue =5000,                
                 lowestweightedAvgIntRateValue = 0,
-                highestweightedAvgIntRateValue =500000,
+                highestweightedAvgIntRateValue =5000,
                 lowestinvestorUPBValue = 0,
-                highestinvestorUPBValue =500000;
-            
-    
-            $("#securityFactorSlider").slider({
-                range: true,
-                min: lowestsecurityFactorValue,
-                max: highestsecurityFactorValue,
-                values: [lowestsecurityFactorValue, highestsecurityFactorValue],
-                slide: function(event, ui) {
-                    $("#lowestsecurityFactorSliderValue").val("$" + ui.values[0]);
-                    $("#highestsecurityFactorSliderValue").val("$" + ui.values[1]);
+                highestinvestorUPBValue =5000;
+
+//#region Security Factor
+ //Initialize Text Box
+   $("#lowestsecurityFactorSliderValue").val(lowestsecurityFactorValue);
+
+   $("#highestsecurityFactorSliderValue").val(highestsecurityFactorValue);
+
+//Event
+function SecurityFactorRangeSliderOnChange(e) {
+            $("#lowestsecurityFactorSliderValue").val( e.value[0]);
+            $("#highestsecurityFactorSliderValue").val( e.value[1]);
+                   
+             }
+
+                function SecurityFactorRangeSliderOnSlide(e) {
+                    //Not Used
+                    console.log("Slide :: new max slide value is: " + e.value[1]);
+                     console.log("Slide :: new min slide value is: " + e.value[0]);
+                  
+                 
                 }
-            });
+               
+//Initialize Slider
+ $("#SecurityFactorRangeSlider").kendoRangeSlider({
+                        change: SecurityFactorRangeSliderOnChange,                       
+                        min: lowestsecurityFactorValue,
+                        max: highestsecurityFactorValue,
+                        smallStep: highestsecurityFactorValue / 20,
+                        largeStep: highestsecurityFactorValue /2
+                    });
 
 
-            $("#maturityDateSlider").slider({
-                range: true,
-                min: lowestmaturityDateValue,
-                max: highestmaturityDateValue,
-                values: [lowestmaturityDateValue, highestmaturityDateValue],
-                slide: function(event, ui) {
-                    $("#lowestmaturityDateSliderValue").val("$" + ui.values[0]);
-                    $("#highestmaturityDateSliderValue").val("$" + ui.values[1]);
+//#endregion   
+//#region Maturity Date Range Slider
+ //Initialize Text Box
+   $("#lowestmaturityDateSliderValue").val(new Date("2013-06-13").toLocaleDateString());
+
+   $("#highestmaturityDateSliderValue").val(new Date("2013-06-20").toLocaleDateString());
+
+//Event
+function MaturityDateRangeSliderOnChange(e) {
+    console.log(new Date(e.value[0] * 1000).toLocaleDateString())
+
+            $("#lowestmaturityDateSliderValue").val(new Date(e.value[0]).toLocaleDateString());
+            $("#highestmaturityDateSliderValue").val(new Date(e.value[1]).toLocaleDateString());
+                   
+             }
+             //new Date(time_posted * 1000).toLocaleDateString();
+
+                function MaturityDateRangeSliderOnSlide(e) {
+                    //Not Used
+                    console.log("Slide :: new max slide value is: " + e.value[1]);
+                     console.log("Slide :: new min slide value is: " + e.value[0]);
+                  
+                 
                 }
-            });
+               
+//Initialize Slider
+$("#MaturityDateRangeSlider").kendoRangeSlider({
+    change: MaturityDateRangeSliderOnChange,
+  min: new Date("2013-06-13").getTime(),
+  max: new Date("2019-06-20").getTime(),
+  smallStep: 86400000,
+  largeStep: 86400000
+});
+ // $("#MaturityDateRangeSlider").kendoRangeSlider({
+ //                        change: MaturityDateRangeSliderOnChange,                       
+ //                        min: new Date("2013-06-13").getTime(),
+ //                        max: new Date("2013-06-20").getTime(),
+ //                        smallStep: 86400000,
+ //                        largeStep: 86400000
+ //                    });
+
+
+//#endregion   
+
+//#region WeightedAvgIntRate
+
+  //Initialize Text Box
+   $("#lowestweightedAvgIntRateSliderValue").val(lowestweightedAvgIntRateValue);
+
+   $("#highestweightedAvgIntRateSliderValue").val(highestweightedAvgIntRateValue);
+
+//Event
+ function WeightedAvgIntRaterangesliderOnChange(e) {
+            $("#lowestweightedAvgIntRateSliderValue").val("$" + e.value[0]);
+            $("#highestweightedAvgIntRateSliderValue").val("$" + e.value[1]);
+                   
+             }
+
+                function WeightedAvgIntRaterangesliderOnSlide(e) {
+                    //Not Used
+                    console.log("Slide :: new max slide value is: " + e.value[1]);
+                     console.log("Slide :: new min slide value is: " + e.value[0]);
+                  
+                 
+                }
+               
+//Initialize Slider
+ $("#WeightedAvgIntRaterangeslider").kendoRangeSlider({
+                        change: WeightedAvgIntRaterangesliderOnChange,                       
+                        min: lowestweightedAvgIntRateValue,
+                        max: highestweightedAvgIntRateValue,
+                        smallStep: highestweightedAvgIntRateValue / 20,
+                        largeStep: highestweightedAvgIntRateValue /2
+                    });
+
+
+//#endregion                
+
+//#region lowestinvestorUPBSliderValue
+
+     $("#lowestinvestorUPBSliderValue").val(lowestinvestorUPBValue);
+
+   $("#highestinvestorUPBSliderValue").val(highestinvestorUPBValue);
+function InvestorUPBrangesliderOnChange(e) {
+  
+              
+            $("#lowestinvestorUPBSliderValue").val("$" + e.value[0]);
+
+            $("#highestinvestorUPBSliderValue").val("$" + e.value[1]);
+                   
+                }
+
+                function InvestorUPBrangesliderOnSlide(e) {
+                    //Not Used
+                    console.log("Slide :: new max slide value is: " + e.value[1]);
+                     console.log("Slide :: new min slide value is: " + e.value[0]);
+                  
+                 
+                }
+               
+
+ $("#InvestorUPBrangeslider").kendoRangeSlider({
+                        change: InvestorUPBrangesliderOnChange,                       
+                        min: lowestinvestorUPBValue,
+                        max: highestinvestorUPBValue,
+                        smallStep: highestinvestorUPBValue / 20,
+                        largeStep: highestinvestorUPBValue /2
+                    });
+
+
+//#endregion
+
+
+       
 
             $("#issueDateSlider").slider({
                 range: true,
@@ -500,58 +683,16 @@
                 }
             });
 
-            $("#weightedAvgIntRateSlider").slider({
-                range: true,
-                min: lowestweightedAvgIntRateValue,
-                max: highestweightedAvgIntRateValue,
-                values: [lowestweightedAvgIntRateValue, highestweightedAvgIntRateValue],
-                slide: function(event, ui) {
-                    $("#lowestweightedAvgIntRateSliderValue").val("$" + ui.values[0]);
-                    $("#highestweightedAvgIntRateSliderValue").val("$" + ui.values[1]);
-                }
-            });
-            
-
-            $("#investorUPBSlider").slider({
-                range: true,
-                min: lowestinvestorUPBValue,
-                max: highestinvestorUPBValue,
-                values: [lowestinvestorUPBValue, highestinvestorUPBValue],
-                slide: function(event, ui) {
-                    $("#lowestinvestorUPBSliderValue").val("$" + ui.values[0]);
-                    $("#highestinvestorUPBSliderValue").val("$" + ui.values[1]);
-                }
-            });
+ 
 
 
-            $("#lowestsecurityFactorSliderValue").val("$" + $("#securityFactorSlider").slider("values", 0));
+         
 
-            $("#highestsecurityFactorSliderValue").val("$" + $("#securityFactorSlider").slider("values", 1));
-
-
-            $("#lowestmaturityDateSliderValue").val("$" + $("#maturityDateSlider").slider("values", 0));
-
-            $("#highestmaturityDateSliderValue").val("$" + $("#maturityDateSlider").slider("values", 1));
-
-
-            $("#lowestissueDateSliderValue").val("$" + $("#issueDateSlider").slider("values", 0));
-
-            $("#highestissueDateSliderValue").val("$" + $("#issueDateSlider").slider("values", 1));
-
-
-            $("#lowestweightedAvgIntRateSliderValue").val("$" + $("#weightedAvgIntRateSlider").slider("values", 0));
-
-            $("#highestweightedAvgIntRateSliderValue").val("$" + $("#weightedAvgIntRateSlider").slider("values", 1));
-
-
-            $("#lowestinvestorUPBSliderValue").val("$" + $("#investorUPBSlider").slider("values", 0));
-
-            $("#highestinvestorUPBSliderValue").val("$" + $("#investorUPBSlider").slider("values", 1));
             
             //Date Picker for Slider
                 $( "#datepicker" ).datepicker({
       showOn: "button",
-                    
+                     isRTL: true,
       buttonImage: 'http://jqueryui.com/resources/demos/datepicker/images/calendar.gif',
       buttonImageOnly: true,
       buttonText: "Select date"
