@@ -287,13 +287,13 @@ input#minIssuedate, input#maxIssuedate, input#minMaturitydate, input#maxMaturity
                                             <div id="securityType" class="panel-collapse  collapse search-option-tools">
                                                 <div class="panel-body search-option-tools-body">
                                                     <label class="col-md-6">
-                                                        <input type="checkbox" /> Single Delivery Security</label>
+                                                        <input type="checkbox" id="SecurityTypeSDS" > Single Delivery Security</label>
                                                     <label class="col-md-6">
-                                                        <input type="checkbox" /> Single Class Resecuritizations</label>
+                                                        <input id="SecurityTypeSCR" type="checkbox" > Single Class Resecuritizations</label>
                                                     <label class="col-md-6">
-                                                        <input type="checkbox" /> Multi Class Security</label>
+                                                        <input id="SecurityTypeMCS" type="checkbox" > Multi Class Security</label>
                                                     <label class="col-md-6">
-                                                        <input type="checkbox" /> Multiple Delivery Securities</label>
+                                                        <input id="SecurityTypeMDS" type="checkbox" > Multiple Delivery Securities</label>
                                                 </div>
                                             </div>
                                             <div class="panel-border"></div>
@@ -309,15 +309,15 @@ input#minIssuedate, input#maxIssuedate, input#minMaturitydate, input#maxMaturity
                                             <div id="securityStatus" class="panel-collapse  collapse search-option-tools">
                                                 <div class="panel-body search-option-tools-body">
                                                     <label class="col-md-4">
-                                                        <input type="checkbox" /> Active</label>
+                                                        <input type="checkbox" id="SecurityStatusActive"/> Active</label>
                                                     <label class="col-md-4">
-                                                        <input type="checkbox" /> Dissolved</label>
+                                                        <input type="checkbox" id="SecurityStatusDissolved"/> Dissolved</label>
                                                     <label class="col-md-4">
-                                                        <input type="checkbox" /> Matured</label>
+                                                        <input type="checkbox" id="SecurityStatusMatured"/> Matured</label>
                                                     <label class="col-md-4">
-                                                        <input type="checkbox" /> Collapsed</label>
+                                                        <input type="checkbox" id="SecurityStatusCollapsed"/> Collapsed</label>
                                                     <label class="col-md-4">
-                                                        <input type="checkbox" /> Ongoing</label>
+                                                        <input type="checkbox" id="SecurityStatusOngoing"/> Ongoing</label>
                                                 </div>
                                             </div>
                                             <div class="panel-border"></div>
@@ -486,38 +486,61 @@ input#minIssuedate, input#maxIssuedate, input#minMaturitydate, input#maxMaturity
             $('[data-toggle="tooltip"]').tooltip();
 
             //On Page Load Initialize default value for Search Options
-            var objSearchOption ={};
+            var objSearchOption ={
+        };
 
             var getSearchOptionsDefaultValueOnPageLoad=function(){
     //ajax call to get the default search option object for top navigation and left navigation
+
     //...
-    objSearchOption.lowestsecurityFactorValue =0;
-    objSearchOption.highestsecurityFactorValue =5000;               
-    objSearchOption.lowestweightedAvgIntRateValue = 0;
-                objSearchOption.highestweightedAvgIntRateValue =5000;
-                objSearchOption.lowestinvestorUPBValue = 0;
-                objSearchOption.highestinvestorUPBValue =5000;
+    objSearchOption.SecurityFactorMin =0;
+    objSearchOption.SecurityFactorMax =5000; 
+
+
+    objSearchOption.WeightedAvgIntRateMin = 0;
+    objSearchOption.WeightedAvgIntRateMax =5000;
+
+    objSearchOption.InvestorUPBMin = 0;
+    objSearchOption.InvestorUPBMax =5000;
 
     //Dates
-    objSearchOption.minMaturitydate = new Date().toLocaleDateString();
-    objSearchOption.maxMaturitydate = new Date().toLocaleDateString();
+    objSearchOption.MaturitydateMin = new Date('04/04/2015').toLocaleDateString();
+    objSearchOption.MaturitydateMax = new Date('01/04/2016').toLocaleDateString();
 
-    objSearchOption.minIssuedate = new Date().toLocaleDateString();
-    objSearchOption.maxIssuedate = new Date().toLocaleDateString();   
+    objSearchOption.IssuedateMin = new Date('04/04/2015').toLocaleDateString();
+    objSearchOption.IssuedateMax = new Date('04/04/2016').toLocaleDateString();   
 
 
+ //Initialize Text Box
+   $("#lowestsecurityFactorSliderValue").val(objSearchOption.SecurityFactorMin);
+
+   $("#highestsecurityFactorSliderValue").val(objSearchOption.SecurityFactorMax);
+
+    //Initialize Text Box
+   $("#lowestweightedAvgIntRateSliderValue").val(objSearchOption.WeightedAvgIntRateMin+ "%");
+
+   $("#highestweightedAvgIntRateSliderValue").val(objSearchOption.WeightedAvgIntRateMax+ "%");
+
+     $("#lowestinvestorUPBSliderValue").val(objSearchOption.InvestorUPBMin);
+
+   $("#highestinvestorUPBSliderValue").val(objSearchOption.InvestorUPBMax);
+
+$('#SecurityTypeSDS,#SecurityTypeSCR,#SecurityTypeMCS,#SecurityTypeMDS,#SecurityStatusActive,#SecurityStatusDissolved,#SecurityStatusMatured,#SecurityStatusCollapsed,#SecurityStatusOngoing').attr('checked', false);
             $('#minIssuedate').datepicker({ /* optional option parameters... */ })
-               .datepicker("setDate", objSearchOption.minIssuedate);
+               .datepicker("setDate", objSearchOption.IssuedateMin);
                 $('#maxIssuedate').datepicker({ /* optional option parameters... */ })
-               .datepicker("setDate", objSearchOption.maxIssuedate);
+               .datepicker("setDate", objSearchOption.IssuedateMax);
                 $('#minMaturitydate').datepicker({ /* optional option parameters... */ })
-               .datepicker("setDate", objSearchOption.minMaturitydate);
+               .datepicker("setDate", objSearchOption.MaturitydateMin);
                 $('#maxMaturitydate').datepicker({ /* optional option parameters... */ })
-               .datepicker("setDate", objSearchOption.maxMaturitydate);
- 
+               .datepicker("setDate", objSearchOption.MaturitydateMax);
+
+
+   
+//#endregion       
 
 };
-
+//Initiakize
 
 
  $( "#minIssuedate, #maxIssuedate,#minMaturitydate,#maxMaturitydate" ).datepicker({
@@ -526,9 +549,14 @@ input#minIssuedate, input#maxIssuedate, input#minMaturitydate, input#maxMaturity
       buttonImageOnly: true,
       buttonText: "Select date"
     });
-
-
+ 
 getSearchOptionsDefaultValueOnPageLoad();
+
+
+
+
+
+
 
             //Dropdown behavior
             //Do not close dropdown if user clickes anywhere else other than outside dropdown body
@@ -577,41 +605,23 @@ getSearchOptionsDefaultValueOnPageLoad();
 
 //#endregion
             //#region Sliders
-            // Initialize high a low value for readonly textbox
+            //#region Security Factor
 
-//#region Kendo SLiders
-
-
- 
-
-//#region Security Factor
- //Initialize Text Box
-   $("#lowestsecurityFactorSliderValue").val(objSearchOption.lowestsecurityFactorValue);
-
-   $("#highestsecurityFactorSliderValue").val(objSearchOption.highestsecurityFactorValue);
 
 //Event
 function SecurityFactorRangeSliderOnChange(e) {
             $("#lowestsecurityFactorSliderValue").val( e.value[0]);
             $("#highestsecurityFactorSliderValue").val( e.value[1]);
                    
-             }
-
-                function SecurityFactorRangeSliderOnSlide(e) {
-                    //Not Used
-                    console.log("Slide :: new max slide value is: " + e.value[1]);
-                     console.log("Slide :: new min slide value is: " + e.value[0]);
-                  
-                 
-                }
+             };
                
 //Initialize Slider
  $("#SecurityFactorRangeSlider").kendoRangeSlider({
                         change: SecurityFactorRangeSliderOnChange,                       
-                        min: objSearchOption.lowestsecurityFactorValue,
-                        max: objSearchOption.highestsecurityFactorValue,
-                        smallStep: objSearchOption.highestsecurityFactorValue / 20,
-                        largeStep: objSearchOption.highestsecurityFactorValue /2
+                        min: objSearchOption.SecurityFactorMin,
+                        max: objSearchOption.SecurityFactorMax,
+                        smallStep: objSearchOption.SecurityFactorMax / 20,
+                        largeStep: objSearchOption.SecurityFactorMax /2
                     });
 
 
@@ -621,78 +631,104 @@ function SecurityFactorRangeSliderOnChange(e) {
 
 //#region WeightedAvgIntRate
 
-  //Initialize Text Box
-   $("#lowestweightedAvgIntRateSliderValue").val(objSearchOption.lowestweightedAvgIntRateValue);
-
-   $("#highestweightedAvgIntRateSliderValue").val(objSearchOption.highestweightedAvgIntRateValue);
+ 
 
 //Event
  function WeightedAvgIntRaterangesliderOnChange(e) {
             $("#lowestweightedAvgIntRateSliderValue").val(e.value[0] + "%");
             $("#highestweightedAvgIntRateSliderValue").val( e.value[1]+ "%");
                    
-             }
-
-                function WeightedAvgIntRaterangesliderOnSlide(e) {
-                    //Not Used
-                    console.log("Slide :: new max slide value is: " + e.value[1]);
-                     console.log("Slide :: new min slide value is: " + e.value[0]);
-                  
-                 
-                }
+             };
                
 //Initialize Slider
  $("#WeightedAvgIntRaterangeslider").kendoRangeSlider({
                         change: WeightedAvgIntRaterangesliderOnChange,                       
-                        min: objSearchOption.lowestweightedAvgIntRateValue,
-                        max: objSearchOption.highestweightedAvgIntRateValue,
-                        smallStep: objSearchOption.highestweightedAvgIntRateValue / 20,
-                        largeStep: objSearchOption.highestweightedAvgIntRateValue /2
+                        min: objSearchOption.WeightedAvgIntRateMin,
+                        max: objSearchOption.WeightedAvgIntRateMax,
+                        smallStep: objSearchOption.WeightedAvgIntRateMax / 20,
+                        largeStep: objSearchOption.WeightedAvgIntRateMax /2
                     });
 
 
-//#endregion                
+//#endregion      
+  
 
 //#region lowestinvestorUPBSliderValue
 
-     $("#lowestinvestorUPBSliderValue").val(objSearchOption.lowestinvestorUPBValue);
-
-   $("#highestinvestorUPBSliderValue").val(objSearchOption.highestinvestorUPBValue);
-function InvestorUPBrangesliderOnChange(e) {
-  
+function InvestorUPBrangesliderOnChange(e) {  
               
             $("#lowestinvestorUPBSliderValue").val("$" + e.value[0]);
 
             $("#highestinvestorUPBSliderValue").val("$" + e.value[1]);
                    
-                }
-
-                function InvestorUPBrangesliderOnSlide(e) {
-                    //Not Used
-                    console.log("Slide :: new max slide value is: " + e.value[1]);
-                     console.log("Slide :: new min slide value is: " + e.value[0]);
-                  
-                 
-                }
+                };
                
 
  $("#InvestorUPBrangeslider").kendoRangeSlider({
                         change: InvestorUPBrangesliderOnChange,                       
-                        min: objSearchOption.lowestinvestorUPBValue,
-                        max: objSearchOption.highestinvestorUPBValue,
-                        smallStep: objSearchOption.highestinvestorUPBValue / 20,
-                        largeStep: objSearchOption.highestinvestorUPBValue /2
+                        min: objSearchOption.InvestorUPBMin,
+                        max: objSearchOption.InvestorUPBMax,
+                        smallStep: objSearchOption.InvestorUPBMax / 20,
+                        largeStep: objSearchOption.InvestorUPBMax /2
                     });
 
 
-//#endregion
-$("#searchOption").click(function(){
-    objSearchOption.SearchString = "JO Bhi Hain";
-    console.log(objSearchOption);
+//#region Kendo SLiders
 
+
+
+ 
+$("#searchOption").click(function(){
+    objSearchOption.SearchString = "CUSIP ID";
+    //console.log(objSearchOption);
+    //get current value before resubmitting search
+    //Security Type
+    
+    objSearchOption.SecurityTypeSingleDeliverySecurity = $("#SecurityTypeSDS").is(':checked');
+    objSearchOption.SecurityTypeSingleClassResecuritizations =  $("#SecurityTypeSCR").is(':checked');
+    objSearchOption.SecurityTypeMultiClassSecurity =  $("#SecurityTypeMCS").is(':checked');
+    objSearchOption.SecurityTypeMultipleDeliverySecurities =  $("#SecurityTypeMDS").is(':checked');
+    //Security Status
+    objSearchOption.SecurityStatusActive = $("#SecurityStatusActive").is(':checked');
+    objSearchOption.SecurityStatusDissolved =  $("#SecurityStatusDissolved").is(':checked');
+    objSearchOption.SecurityStatusMatured =  $("#SecurityStatusMatured").is(':checked');
+    objSearchOption.SecurityStatusCollapsed =  $("#SecurityStatusCollapsed").is(':checked');
+    objSearchOption.SecurityStatusOngoing =  $("#SecurityStatusOngoing").is(':checked');
+    //Security factor    
+    objSearchOption.SecurityFactorMin =$("#lowestsecurityFactorSliderValue").val();
+    objSearchOption.SecurityFactorMax =$("#highestsecurityFactorSliderValue").val();
+    //Weighted Avg              
+    objSearchOption.WeightedAvgIntRateMin = $("#lowestweightedAvgIntRateSliderValue").val();
+    objSearchOption.WeightedAvgIntRateMax =$("#highestweightedAvgIntRateSliderValue").val();
+    //Investor UPB
+    objSearchOption.InvestorUPBMin = $("#lowestinvestorUPBSliderValue").val();
+    objSearchOption.InvestorUPBMax =  $("#highestinvestorUPBSliderValue").val();
+
+    //Maturity Date 
+    objSearchOption.MaturitydateMin = $("#minMaturitydate").datepicker("getDate");
+    objSearchOption.MaturitydateMax = $("#maxMaturitydate").datepicker("getDate");
+    //Issue Date
+    objSearchOption.IssuedateMin = $("#minIssuedate").datepicker("getDate");
+    objSearchOption.IssuedateMax = $("#maxIssuedate").datepicker("getDate"); 
+
+    //Call Kendo Grid Submit Method to reload Grid and Display New Result
+     console.log(objSearchOption);
+     //call backend search result page
+     $.get( "http://www.google.com", objSearchOption)
+  .done(function() {console.log("success");
+  })
+  .fail(function() {console.log("error");
+  })
+  .always(function() {
+    console.log("finished");
+    getSearchOptionsDefaultValueOnPageLoad();
+    console.log(objSearchOption.InvestorUPBMin ,objSearchOption.InvestorUPBMax);
+    $("#SecurityFactorRangeSlider").data("kendoRangeSlider").value([objSearchOption.SecurityFactorMin ,objSearchOption.SecurityFactorMax]);
+    $("#WeightedAvgIntRaterangeslider").data("kendoRangeSlider").value([objSearchOption.WeightedAvgIntRateMin ,objSearchOption.WeightedAvgIntRateMax]);
+    $("#InvestorUPBrangeslider").data("kendoRangeSlider").value([objSearchOption.InvestorUPBMin ,objSearchOption.InvestorUPBMax]);
+  });
     //Reset Top Search Criteria
 
-    getSearchOptionsDefaultValueOnPageLoad();
 });
                
 
