@@ -1,14 +1,19 @@
 # PracticeCode
-Contains Practice reusable code for HTML JS and CSS3 only
+Contains beginner reusable code for HTML JS and CSS3, that can be used to teach new learner how to use awesome web technologies.
 
+
+#HTML
+#CSS
 #Ajax
 
 1. Using JQuery methods
+```
   $.ajax();
   $.get();
   $.post();
-  
+ ``` 
   Using promise implementation
+```
   $.get()
   .done(function(data){})
   .fail(funciton(err){}).
@@ -16,7 +21,7 @@ Contains Practice reusable code for HTML JS and CSS3 only
   
   $.post().done().fail.always();
   
-  
+
   // Assign handlers immediately after making the request,
 // and remember the jqxhr object for this request
 var jqxhr = $.get( "example.php", function() {
@@ -51,7 +56,7 @@ $.ajax({
   success: success,
   dataType: dataType
 });
-
+```
 Practice APi to Use:
 
 https://api.github.com/users
