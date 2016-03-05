@@ -51,3 +51,9 @@ $.ajax({
   success: success,
   dataType: dataType
 });
+
+Practice APi to Use:
+
+https://api.github.com/users
+
+https://api.github.com/users/knitesh
